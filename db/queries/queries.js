@@ -13,12 +13,13 @@ const getChar = (charId) => {
   const query = pool.query(sql, [charId]);
   return query
     .then((res) => {
-      console.log("HERE: ", res.rows);
+      // console.log("HERE: ", res.rows);
       return res.rows[0];
     })
     .catch((err) => err);
 };
 
+//needs adjustment to handle whole state change at once
 const setStat = (stat, value, id) => {
   console.log("S: ", stat, "\nV: ", value, "\nI: ", id);
   return pool

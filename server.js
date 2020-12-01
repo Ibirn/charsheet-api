@@ -30,6 +30,6 @@ App.get("/character", async (req, res) => {
 });
 
 App.put("/character", async (req, res) => {
-  console.log(req.body);
-  await setStat(req.body.stat, req.body.value, req.body.id);
+  console.log("REQBODY: ", req.body);
+  // await setStat(req.body.stat, req.body.value, req.body.id);
 });
