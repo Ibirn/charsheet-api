@@ -27,7 +27,13 @@ CREATE TABLE inventory
   id SERIAL PRIMARY KEY NOT NULL,
   character_id INTEGER REFERENCES characters(id) ON DELETE CASCADE,
   primary_weapon TEXT,
-  bag TEXT
+  secondary_weapon TEXT,
+  armor TEXT,
+  attunement_1 TEXT,
+  attunement_2 TEXT,
+  attunement_3 TEXT,
+  bag TEXT,
+  gold INTEGER
 );
 
 CREATE TABLE other

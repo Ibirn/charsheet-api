@@ -8,10 +8,10 @@ VALUES
 );
 
 INSERT INTO inventory
-  (character_id, primary_weapon, bag)
+  (character_id, primary_weapon, secondary_weapon, armor, attunement_1, attunement_2, attunement_3, bag, gold)
 VALUES
   (
-    1, 'greataxe', 'potions of healing, shield, 15gp'
+    1, 'greataxe', 'longsword', null, 'bracers of ogre strength', 'ring of invisibility', 'boots of speed', 'potions of healing, shield', 15
 );
 
 INSERT INTO other

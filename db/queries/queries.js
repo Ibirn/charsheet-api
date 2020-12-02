@@ -20,19 +20,32 @@ const getChar = (charId) => {
 };
 
 //needs adjustment to handle whole state change at once
-const setStat = (stat, value, id) => {
-  console.log("S: ", stat, "\nV: ", value, "\nI: ", id);
+const setStat = (body) => {
+  console.log("S: ", body);
   return pool
     .query(
       `
   UPDATE characters
-  SET ${stat} = $1
-  WHERE id = $2
+  SET strength = $1,
+  dexterity = $2,
+  constitution = $3,
+  intelligence = $4,
+  wisdom = $5,
+  charisma = $6
+  WHERE id = $7
   RETURNING *`,
-      [value, id]
+      [
+        body.strength,
+        body.dexterity,
+        body.constitution,
+        body.intelligence,
+        body.wisdom,
+        body.charisma,
+        body.id,
+      ]
     )
     .then((res) => {
-      console.log("UP: ", res.rows);
+      console.log("UP: ", res.rows[0]);
       return res.rows[0];
     })
     .catch((error) => console.log(error));
