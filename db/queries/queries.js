@@ -19,7 +19,6 @@ const getChar = (charId) => {
     .catch((err) => err);
 };
 
-//needs adjustment to handle whole state change at once
 const setStat = (body) => {
   console.log("S: ", body);
   return pool
@@ -51,4 +50,15 @@ const setStat = (body) => {
     .catch((error) => console.log(error));
 };
 
-module.exports = { getChar, setStat };
+const getInventory = (charId) => {
+  const sql = `SELECT * FROM inventory WHERE id = $1`;
+  const query = pool.query(sql, [charId]);
+  return query
+    .then((res) => {
+      console.log("HERE: ", res.rows);
+      return res.rows[0];
+    })
+    .catch((err) => err);
+};
+
+module.exports = { getChar, setStat, getInventory };
