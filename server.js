@@ -1,14 +1,16 @@
 require("dotenv").config();
-const { getChar, setStat } = require("./db/queries/queries");
+const { getChar, setStat, getInventory } = require("./db/queries/queries");
 const Express = require("express");
 const App = Express();
 const BodyParser = require("body-parser");
 const PORT = 8080;
+const cors = require("cors");
 
 // Express Configuration
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static("public"));
+App.use(cors());
 
 // Sample GET route
 App.get("/api/data", (req, res) =>
@@ -31,5 +33,10 @@ App.get("/character", async (req, res) => {
 
 App.put("/character", async (req, res) => {
   console.log("REQBODY: ", req.body);
-  // await setStat(req.body.stat, req.body.value, req.body.id);
+  await setStat(req.body);
+});
+
+App.get("/inventory", async (req, res) => {
+  const char = await getInventory(1);
+  res.json(char);
 });
