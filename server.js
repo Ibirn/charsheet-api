@@ -40,3 +40,7 @@ App.get("/inventory", async (req, res) => {
   const char = await getInventory(1);
   res.json(char);
 });
+
+App.put("/inventory", (req, res) => {
+  console.log("INV REQBODY: ", req.body);
+});
