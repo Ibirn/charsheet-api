@@ -81,10 +81,10 @@ const setInventory = (body) => {
         body.armor,
         body.attunement_1,
         body.attunement_2,
-        body.attunemnt_3,
+        body.attunement_3,
         body.bag,
         body.gold,
-        body.id,
+        body.character_id,
       ]
     )
     .then((res) => {

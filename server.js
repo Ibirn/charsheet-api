@@ -1,5 +1,10 @@
 require("dotenv").config();
-const { getChar, setStat, getInventory } = require("./db/queries/queries");
+const {
+  getChar,
+  setStat,
+  getInventory,
+  setInventory,
+} = require("./db/queries/queries");
 const Express = require("express");
 const App = Express();
 const BodyParser = require("body-parser");
@@ -41,6 +46,7 @@ App.get("/inventory", async (req, res) => {
   res.json(char);
 });
 
-App.put("/inventory", (req, res) => {
+App.put("/inventory", async (req, res) => {
   console.log("INV REQBODY: ", req.body);
+  await setInventory(req.body);
 });
